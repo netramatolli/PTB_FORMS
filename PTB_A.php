@@ -5,7 +5,7 @@ session_start();
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<H1>PTB Data Entry Form </H1>
+<H1><center>PTB Data Entry Form</center></H1>
 <script>
 function setVisibility(elem, v)
 {
@@ -910,10 +910,10 @@ function getQuestion($pq, $inp="")
 
 ?>
 <form action=PTB_A.php method=post>
-<div style="width:600px;border:1px solid black;padding:5px;background-color:aliceblue;" >
+<div style="width:600px;border:1px solid black;padding:5px;background-color:aliceblue; margin:auto;" >
 <p><center>PART - A</center></p>
 
-<table rules=all style="background-color:lightyellow;color:brown;border:1px solid green;margin:5px;" >
+<table rules=all style="background-color:lightyellow;color:brown;border:1px solid green;margin:auto;" >
 <?php 
    if ($curPage == "" || $curPage == "A1")
    {
@@ -1018,9 +1018,9 @@ function getQuestion($pq, $inp="")
 ?>
 </table>
 
-<input type=submit name=action value='Next'>
-<input type=submit name=action value='Prev'>
-<input type=submit name=action value='Refresh'>
+<input type=submit name=action value='Prev' style="float: left;">
+<input type=submit name=action value='Next' style="float:right;">
+<input type=submit name=action value='Refresh' style="margin-left: 229px;">
 
 <?php
    echo "<input type=hidden name=curPage value=" . $curPage ." >";
