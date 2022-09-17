@@ -189,15 +189,15 @@ function getQuestion($pq, $inp="")
   if ($pq == "A1Q5A")
   {
       $q = "Type of PTB";
-      $a = "Smear Positive:  ";
-      $a .= "<input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes'  ";
+      $a = "Smear:<ul style='list-style-type:none;'>";
+      $a .= "<li>Positive<input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes'  ";
       if ($inp == "Yes")
          $a .= " checked ";
-      $a .= ">";
-      $a .= " Negative<input type=radio id=" . $pq . "_2 name=" . $pq . " value='No' ";
+      $a .= "></li>";
+      $a .= "<li>Negative<input type=radio id=" . $pq . "_2 name=" . $pq . " value='No' ";
       if ($inp == "No")
          $a .= " checked ";
-      $a .= ">";
+      $a .= "></li>";
   }
   if ($pq == "A1Q5B")
   {
