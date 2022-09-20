@@ -253,6 +253,7 @@ function getQuestion($pq, $inp="")
    if ($pq == "A1Q6B")
    {
       $q = "";
+      
       $a = "DRTB <ul  style='list-style-type:none;' >";
       $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='DRTB_New' > New </li>";
       $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='DRTB_Retreat' > Retreatment </li>";

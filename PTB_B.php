@@ -69,7 +69,7 @@ include "commons/functions.php";
    $B1Q15 = getRequest('B1Q15', "");
    $B1Q16 = getRequest('B1Q16', "");
 
-   // $B2Q0 = getRequest('B2Q0', "");
+   //$B2Q0 = getRequest('B2Q0', "");
    $B2Q1 = getRequest('B2Q1', "");
    $B2Q2 = getRequest('B2Q2', "");
    $B2Q3 = getRequest('B2Q3', "");
@@ -94,6 +94,19 @@ include "commons/functions.php";
    $B4Q6 = getRequest('B4Q6', "");
    $B4Q7 = getRequest('B4Q7', "");
    $B4Q8 = getRequest('B4Q8', "");
+   $B4Q9 = getRequest('B4Q9', "");
+
+
+   $B5Q1 = getRequest('B5Q1', "");
+   $B5Q2 = getRequest('B5Q2', "");
+   $B5Q3 = getRequest('B5Q3', "");
+   $B5Q4 = getRequest('B5Q4', "");
+   $B5Q5 = getRequest('B5Q5', "");
+   $B5Q6 = getRequest('B5Q6', "");
+   $B5Q7 = getRequest('B5Q7', "");
+   $B5Q8 = getRequest('B5Q8', "");
+   $B5Q9 = getRequest('B5Q9', "");
+
 
 
 
@@ -128,7 +141,7 @@ include "commons/functions.php";
    {
     $q = "What are the signs and symtoms of PTB*"; 
     $a = "<ul  style='list-style-type:none;' >";
-    $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='Cough' > Cough </li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='Cough' > Cough>2weeks </li>";
     $a .= "<li>  <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='Weightloss' > Weight loss </li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='Lossofappetite' > Loss of appetite </li>";
     $a .= "<li>  <input type=checkbox id=" . $pq . "_4 name=" . $pq . " value='Fever' > Fever </li>";
@@ -146,11 +159,19 @@ include "commons/functions.php";
    {
     $q = "Can PTB transmitted from one person to another"; 
     $a = "<ul  style='list-style-type:none;' >";
-    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes </li>";
-    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
-    $a .= "<li>  <input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntno'> Don't know </li>";
-    // ADD if no gto que no-5
-    $a .= "</ul>";
+    $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' onclick='setVisibility(\"B1Q4\", \"visible\");' " ;
+      if ($inp == "Yes" )
+         $a .= " checked ";
+      $a .= "> Yes </li>";
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' onclick='setVisibility(\"B1Q4\", \"hidden\");'" ;
+      if ($inp == "No" )
+         $a .= " checked ";
+      $a .= "> No </li>";
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='NA' onclick='setVisibility(\"B1Q4\", \"visible\");' " ;
+      if ($inp == "NA" )
+         $a .= " checked ";
+      $a .= "> Don't know </li>";
+      $a .= "</ul>";
    } 
    
    if ($pq == "B1Q4")
@@ -329,12 +350,12 @@ include "commons/functions.php";
 
 // PAGE B2
 
-   // if ($pq == "B2Q0")
-   // {
-   //  $q = "In your opinion, how serious a disease is PTB?"; 
-   //  }  
+   //  if ($pq == "B2Q0")
+   //  {
+   //   $q = "In your opinion, how serious a disease is PTB?"; 
+   //   }  
    
-   // if ($pq == "B2Q1")
+    if ($pq == "B2Q1")
    {
     $q = "In your opinion, how serious a disease is PTB?"; 
     $a = "<ul  style='list-style-type:none;' >";
@@ -608,13 +629,13 @@ include "commons/functions.php";
    {
     $q = "How do you take care of your health during the due course of treatment?"; 
     $a = "<ul  style='list-style-type:none;' >";
-    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Excercise' > Excercise </li>";
-    $a .= "<li> <input type=radio id=" . $pq . "_2 name=" . $pq . " value='Goodnutrition' > Good nutrition</li>";
-    $a .= "<li> <input type=radio id=" . $pq . "_3 name=" . $pq . " value='Takingmedicationsregularl'> Taking medications regularly </li>";
-    $a .= "<li> <input type=radio id=" . $pq . "_4 name=" . $pq . " value='Yoga' > Yoga </li>";
-    $a .= "<li> <input type=radio id=" . $pq . "_5 name=" . $pq . " value='Regular followupwithhealthworkers' > Regular follow up with health workers</li>";
-    $a .= "<li> <input type=radio id=" . $pq . "_6 name=" . $pq . " value='dntknw'</li> Don't know";
-    $a .= "<li> <input type=radio id=" . $pq . "_7 name=" . $pq . " value='others' >Others</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='Excercise' > Excercise </li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='Goodnutrition' > Good nutrition</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='Takingmedicationsregularl'> Taking medications regularly </li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_4 name=" . $pq . " value='Yoga' > Yoga </li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_5 name=" . $pq . " value='Regular followupwithhealthworkers' > Regular follow up with health workers</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_6 name=" . $pq . " value='dntknw'</li> Don't know";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_7 name=" . $pq . " value='others' >Others</li>";
     $a .= "Specify <li> <input type=text id=" . $pq . "_8 name=" . $pq . " value='' ></li>";
    
     $a .= "</ul>";
@@ -626,11 +647,104 @@ include "commons/functions.php";
     $a = "<ul  style='list-style-type:none;' >";
     $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' > (Analysis by coding)  </li>";
     $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='Dntknw'> Don't know </li>";
+    $a .= "<li>How much<input type= id=" . $pq . "_3 name=" . $pq . " value=''></li>";
     
+    $a .= "</ul>";
+   } 
+   
+
+
+   if ($pq == "B5Q1")
+   {
+    $q = "Where did you first learn about pulmonary tuberculosis or PTB?*(Check all that are mentioned)"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='Newspapers/magazines' > Newspapers and magazines </li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='Radio' > Radio</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='TV'> TV </li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_4 name=" . $pq . " value='Billboards' > Billboards</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_5 name=" . $pq . " value='Brochuresposters'> Brochures,posters and printed materials</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_6 name=" . $pq . " value='Healthworkers'</li> Health workers";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_7 name=" . $pq . " value='Familyfriendsneighbours' >Family, friends, neighbours and collegues</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_8 name=" . $pq . " value='Religiousleaders' >Religious leaders</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_9 name=" . $pq . " value='Teachers' >Teachers</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_10 name=" . $pq . " value='Don'tknow' >Don't know</li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_11 name=" . $pq . " value='Others' >Others</li>";
+    $a .= "Specify <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+   
+    $a .= "</ul>";
+   }
+
+   if ($pq == "B5Q2")
+   {
+    $q = "Do you feel well informed about how PTB spreads?"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
+    $a .= "If yes who has provided the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
     
     $a .= "</ul>";
    } 
 
+   if ($pq == "B5Q3")
+   {
+    $q = "Do you feel well informed about how PTB treatment?"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
+    $a .= "If yes who has provided the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
+    
+    $a .= "</ul>";
+   } 
+
+   if ($pq == "B5Q4")
+   {
+    $q = "Do you feel well informed about availability of free drugs for PTB?"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
+    $a .= "If yes who has provided the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
+    
+    $a .= "</ul>";
+   } 
+
+   if ($pq == "B5Q6")
+   {
+    $q = "Do you feel well informed about availability of social security schemes for PTB?"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
+    $a .= "If yes who has provided the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
+    
+    $a .= "</ul>";
+   } 
+
+   if ($pq == "B5Q7")
+   {
+    $q = "Do you wish you could get more information about PTB?"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
+   //  $a .= "If yes who has provided the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
+    
+    $a .= "</ul>";
+   } 
+
+   if ($pq == "B5Q8")
+   {
+    $q = "Do you know about PTB before yor were diagnosed for PTB?"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
+    $a .= "If yes who has provided the information or from where did you get the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
+    
+    $a .= "</ul>";
+   } 
 
 
 
@@ -642,85 +756,94 @@ include "commons/functions.php";
 ?>
 
 <form action=PTB_B.php method=post>
-<div style="width:600px;border:1px solid black;padding:5px;background-color:aliceblue; margin:auto;" >
-<p><strong>1. knowledge of the participants on cause, symtoms,transission, treatement and prevention of PTB.</p></strong>
+   <div style="width:600px;border:1px solid black;padding:5px;background-color:aliceblue; margin:auto;" >
+         <p><strong>1. knowledge of the participants on cause, symtoms,transission, treatement and prevention of PTB.</p></strong>
 
-<table rules=all style="background-color:lightyellow;color:brown;border:1px solid green;margin:auto;" >
-<?php 
-   if ($curPage == "" || $curPage == "B1")
-   {
-      echo getQuestion ("B1Q1", $B1Q1); 
-      echo getQuestion ("B1Q2", $B1Q2 ); 
-      echo getQuestion ("B1Q3", $B1Q3 );
-      echo getQuestion ("B1Q4", $B1Q4 ); 
-      echo getQuestion ("B1Q5", $B1Q5 ); 
-      echo getQuestion ("B1Q6", $B1Q6); 
-      echo getQuestion ("B1Q7", $B1Q7 ); 
-      echo getQuestion ("B1Q8", $B1Q8 );
-      echo getQuestion ("B1Q9", $B1Q9 ); 
-      echo getQuestion ("B1Q10", $B1Q10 ); 
-      echo getQuestion ("B1Q11", $B1Q11); 
-      echo getQuestion ("B1Q12", $B1Q12); 
-      echo getQuestion ("B1Q13", $B1Q13);
-      echo getQuestion ("B1Q14", $B1Q14);
-      echo getQuestion ("B1Q15", $B1Q15);
-      echo getQuestion ("B1Q16", $B1Q16);
-   
-      $curPage = "B1";
-   }
+   <table rules=all style="background-color:lightyellow;color:brown;border:1px solid green;margin:auto;" >
 
-   else if ($curPage == "B2")
-   {  
-      // echo getQuestion ("B2Q0",$B2Q0); 
-      echo getQuestion ("B2Q1",$B2Q1); 
-      echo getQuestion ("B2Q2",$B2Q2); 
-      echo getQuestion ("B2Q3",$B2Q3);
-      echo getQuestion ("B2Q4",$B2Q4);
-      echo getQuestion ("B2Q5",$B2Q5);
-      echo getQuestion ("B2Q6",$B2Q6);
-      echo getQuestion ("B2Q7",$B2Q7);     
-      $curPage = "B2";
-   }
+      <?php 
+      if ($curPage == "" || $curPage == "B1")
+       {
+            echo getQuestion ("B1Q1", $B1Q1); 
+            echo getQuestion ("B1Q2", $B1Q2 ); 
+            echo getQuestion ("B1Q3", $B1Q3 );
+            echo getQuestion ("B1Q4", $B1Q4 ); 
+            echo getQuestion ("B1Q5", $B1Q5 ); 
+            echo getQuestion ("B1Q6", $B1Q6); 
+            echo getQuestion ("B1Q7", $B1Q7 ); 
+            echo getQuestion ("B1Q8", $B1Q8 );
+            echo getQuestion ("B1Q9", $B1Q9 ); 
+            echo getQuestion ("B1Q10", $B1Q10 ); 
+            echo getQuestion ("B1Q11", $B1Q11); 
+            echo getQuestion ("B1Q12", $B1Q12); 
+            echo getQuestion ("B1Q13", $B1Q13);
+            echo getQuestion ("B1Q14", $B1Q14);
+            echo getQuestion ("B1Q15", $B1Q15);
+            echo getQuestion ("B1Q16", $B1Q16);
+         
+            $curPage = "B1";
+       }
 
-   else if ($curPage == "B3")
-   {  
-      // echo getQuestion ("B2Q0",$B2Q0); 
-      echo getQuestion ("B3Q1",$B3Q1);
-      echo getQuestion ("B3Q2",$B3Q2); 
-      echo getQuestion ("B3Q3",$B3Q3);
-      echo getQuestion ("B3Q4",$B3Q4);
-      echo getQuestion ("B3Q5",$B3Q5);
-      
+       
 
-      $curPage = "B3";
-   }
+         else if ($curPage == "B2")
+         {  
+            // echo getQuestion ("B2Q0",$B2Q0); 
+            echo getQuestion ("B2Q1",$B2Q1); 
+            echo getQuestion ("B2Q2",$B2Q2); 
+            echo getQuestion ("B2Q3",$B2Q3);
+            echo getQuestion ("B2Q4",$B2Q4);
+            echo getQuestion ("B2Q5",$B2Q5);
+            echo getQuestion ("B2Q6",$B2Q6);
+            echo getQuestion ("B2Q7",$B2Q7);     
+            $curPage = "B2";
+         }
 
+         else if ($curPage == "B3")
+         {  
+            // echo getQuestion ("B2Q0",$B2Q0); 
+            echo getQuestion ("B3Q1",$B3Q1);
+            echo getQuestion ("B3Q2",$B3Q2); 
+            echo getQuestion ("B3Q3",$B3Q3);
+            echo getQuestion ("B3Q4",$B3Q4);
+            echo getQuestion ("B3Q5",$B3Q5);
+            
 
-   else if ($curPage == "B4")
-   {  
-      // echo getQuestion ("B2Q0",$B2Q0); 
-      echo getQuestion ("B4Q1",$B4Q1);
-      echo getQuestion ("B4Q2",$B4Q2); 
-      echo getQuestion ("B4Q3",$B4Q3);
-      echo getQuestion ("B4Q4",$B4Q4);
-      echo getQuestion ("B4Q5",$B4Q5);
-      echo getQuestion ("B4Q4",$B4Q4);
-      echo getQuestion ("B4Q4",$B4Q4);
-      echo getQuestion ("B4Q4",$B4Q4);
-
-      
-
-      $curPage = "B4";
-   }
+            $curPage = "B3";
+         }
 
 
+         else if ($curPage == "B4")
+         {  
+            // echo getQuestion ("B2Q0",$B2Q0); 
+            echo getQuestion ("B4Q1",$B4Q1);
+            echo getQuestion ("B4Q2",$B4Q2); 
+            echo getQuestion ("B4Q3",$B4Q3);
+            echo getQuestion ("B4Q4",$B4Q4);
+            echo getQuestion ("B4Q5",$B4Q5);
+            echo getQuestion ("B4Q6",$B4Q6);
+            echo getQuestion ("B4Q7",$B4Q7);
+            echo getQuestion ("B4Q8",$B4Q8);
+            echo getQuestion ("B4Q9",$B4Q9);
+            $curPage = "B4";
+         }
 
-
-
-   
-
-   ?>
-</table>
+         else if ($curPage == "B5")
+         {  
+            // echo getQuestion ("B2Q0",$B2Q0); 
+            echo getQuestion ("B5Q1",$B5Q1);
+            echo getQuestion ("B5Q2",$B5Q2); 
+            echo getQuestion ("B5Q3",$B5Q3);
+            echo getQuestion ("B5Q4",$B5Q4);
+            echo getQuestion ("B5Q5",$B5Q5);
+            echo getQuestion ("B5Q6",$B5Q6);
+            echo getQuestion ("B5Q7",$B5Q7);
+            echo getQuestion ("B5Q8",$B5Q8);
+            echo getQuestion ("B5Q9",$B5Q9);
+            $curPage = "B5";
+         }
+      ?>
+   </table>
 
 <input type=submit name=action value='Prev' style="float: left;">
 <input type=submit name=action value='Next' style="float:right;">
