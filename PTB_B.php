@@ -734,7 +734,17 @@ include "commons/functions.php";
     $a .= "</ul>";
    } 
 
-   
+   if ($pq == "B5Q8")
+   {
+    $q = "Do you know about PTB before yor were diagnosed for PTB?"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
+    $a .= "If yes who has provided the information or from where did you get the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
+    
+    $a .= "</ul>";
+   } 
 
 
 
