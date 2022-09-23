@@ -597,13 +597,15 @@ include "commons/functions.php";
     $a = "<ul  style='list-style-type:none;' >";
     $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='wearmask' > Wear mask when going to public </li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='avoidcough' >Avoid cough in front of others</li>";
-    $a .= "<li> <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='covermounth'> Covering mount and nose coughinh or sneezing </li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='covermounth'> Covering mouth and nose coughing or sneezing </li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_4 name=" . $pq . " value='avoidclose' > Avoid close contact with others </li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_5 name=" . $pq . " value='safedisposesputum' > Safe disposal of sputum</li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_6 name=" . $pq . " value='ventilatedroom' >Ventilation of living rooms</li>";
-    $a .= "<li> <input type=checkbox id=" . $pq . "_7 name=" . $pq . " value='dntknw'</li> Don't know";
-    $a .= "<li> <input type=checkbox id=" . $pq . "_8 name=" . $pq . " value='others' >Others</li>";
-    $a .= "Specify <li> <input type=text id=" . $pq . "_9 name=" . $pq . " value='' ></li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_7 name=" . $pq . " value='regularmedication'</li> Taking regular medications";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_8 name=" . $pq . " value='keepdistance'</li> Keep distance with others";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_9 name=" . $pq . " value='dntknw'</li> Don't know";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_10 name=" . $pq . " value='others' >Others</li>";
+    $a .= "<li>Specify<input type= id=" . $pq . "_11 name=" . $pq . " value=''></li>";
    
     $a .= "</ul>";
    }
