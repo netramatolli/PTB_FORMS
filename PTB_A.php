@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+use LDAP\Result;
+
 session_start();
 ?>
 <!doctype HTML>
@@ -18,6 +21,119 @@ function setVisibility(elem, v)
 <body>
 <?php
 include "commons/functions.php";
+include "commons/dbconnect.php";
+
+if (isset($_POST['submit'])){
+
+// $A1Q1 =$_POST[''];
+// $A1Q2A =$_POST[''];
+// $A1Q2B =$_POST[''];
+// $A1Q3 =$_POST[''];
+// $A1Q4 =$_POST[''];
+
+$A1Q5A =$_POST['A1Q5A'];
+$A1Q5B =$_POST['A1Q5B'];
+$A1Q5C =$_POST['A1Q5C'];
+$A1Q5D =$_POST['A1Q5D'];
+$A1Q6A =$_POST['A1Q6A'];
+$A1Q6B =$_POST['A1Q6B'];
+$A1Q7 =$_POST['A1Q7'];
+$A1Q8 =$_POST['A1Q8'];
+$A1Q9 =$_POST['A1Q9'];
+$A2Q10 =$_POST['A2Q10']; 
+$A2Q11 =$_POST['A2Q11'];
+$A2Q12 =$_POST['A2Q12'];
+$A2Q13 =$_POST['A2Q13'];
+$A2Q14 =$_POST['A2Q14'];
+$A2Q15A=$_POST['A2Q15A'];
+$A2Q15B=$_POST['A2Q15B'];
+$A2Q16 =$_POST['A2Q16'];
+$A2Q17 =$_POST['A2Q17'];
+$A2Q18A=$_POST['A2Q18A'];
+$A2Q18B=$_POST['A2Q18B'];
+$A2Q18C=$_POST['A2Q18C'];
+$A2Q19A=$_POST['A2Q19A'];
+$A2Q19B=$_POST['A2Q19B'];
+$A2Q19C=$_POST['A2Q19C'];
+$A3Q20A=$_POST['A2Q19C'];
+$A3Q20B=$_POST['A3Q20B'];
+$A3Q20C=$_POST['A3Q20C'];
+$A3Q21 =$_POST['A3Q21'];
+$A3Q22 =$_POST['A3Q22'];
+$A3Q23 =$_POST['A3Q23'];
+$A3Q24 =$_POST['A3Q24'];
+$A3Q25 =$_POST['A3Q25'];
+$A3Q26 =$_POST['A3Q26'];
+$A3Q27 =$_POST['A3Q27'];
+$A3Q28 =$_POST['A3Q28'];
+$A3Q29 =$_POST['A3Q29'];
+$A3Q30 =$_POST['A3Q30'];
+$A3Q31A=$_POST['A3Q31A'];
+$A3Q31B=$_POST['A3Q31B'];
+$A3Q31C=$_POST['A3Q31C'];
+$A4Q32 =$_POST['A4Q32'];
+$A4Q33 =$_POST['A4Q33'];
+$A4Q34 =$_POST['A4Q34'];
+$A4Q35 =$_POST['A4Q35'];
+$A4Q36 =$_POST['A4Q36'];
+$A4Q37 =$_POST['A4Q37'];
+$A4Q38 =$_POST['A4Q38'];
+$A4Q38a=$_POST['A4Q38a'];
+$A4Q39 =$_POST['A4Q39'];
+$A4Q39a=$_POST['A4Q39a'];
+$A4Q40 =$_POST['A4Q40'];
+$A4Q41 =$_POST['A4Q41'];
+$A4Q42 =$_POST['A4Q42'];
+$A4Q43 =$_POST['A4Q43'];
+$A5Q44 =$_POST['A5Q44'];
+$A5Q45 =$_POST['A5Q45'];
+$A5Q46 =$_POST['A5Q46'];
+$A5Q47 =$_POST['A5Q47'];
+$A5Q48 =$_POST['A5Q48'];
+$A5Q48A=$_POST['A5Q48A'];
+$A5Q49 =$_POST['A5Q49'];
+$A5Q49A=$_POST['A5Q49A'];
+$A5Q50 =$_POST['A5Q50'];
+$A5Q51 =$_POST['A5Q51'];
+$A5Q52 =$_POST['A5Q52'];
+$A5Q53 =$_POST['A5Q53'];
+$A5Q54 =$_POST['A5Q54'];
+$A5Q55 =$_POST['A5Q55'];
+
+
+// $sql="insert into `part_a`(`A1Q5A`, `A1Q5B`, `A1Q5C`, `A1Q5D`, `A1Q6A`, `A1Q6B`, `A1Q7`,
+//  `A1Q8`, `A1Q9`)VALUES('$A1Q5A','$A1Q5B','$A1Q5C','$A1Q5D','$A1Q6A','$A1Q6B','$A1Q7','$A1Q8','$A1Q9')"; 
+
+
+ $sql="insert into `part_a`(`A1Q5A`, `A1Q5B`, `A1Q5C`, `A1Q5D`, `A1Q6A`, `A1Q6B`, `A1Q7`, `A1Q8`, `A1Q9`, `A2Q10`, 
+ `A2Q11`, `A2Q12`, `A2Q13`, `A2Q14`, `A2Q15A`, `A21Q16`, `A2Q17`, `A2Q18A`, `A2Q18B`,
+  `A2Q18C`, `A2Q19A`, `A2Q19B`, `A219QC`, `A3Q20A`, `A3Q20B`, `A3Q20C`, `A3Q21`, `A3Q22`,
+   `A3Q23`, `A3Q24`, `A3Q25`, `A3Q26`, `A3Q27`, `A3Q28`, `A3Q29`, `A3Q30`, `A3Q31A`,
+    `A3Q31B`, `A3Q31C`, `A4Q32`, `A4Q33`, `A4Q34`, `A4Q35`, `A4Q36`, `A4Q37`, `A4Q38`,
+     `A4Q38a`, `A4Q39`, `A4Q39a`, `A4Q40`, `A4Q41`, `A4Q42`, `A4Q43`, `A5Q44`, `A5Q45`,
+      `A5Q46`, `A5Q47`, `A5Q48`, `A5Q48A`, `A5Q49`, `A5Q49A`, `A5Q50`, `A5Q51`, `A5Q52`,
+       `A5Q53`, `A5Q54`, `A5Q55`, `A2Q15B`) 
+VALUES('$A1Q5A','$A1Q5B','$A1Q5C','$A1Q5D','$A1Q6A','$A1Q6B','$A1Q7','$A1Q8','$A1Q9',
+'$A2Q10','$A2Q11','$A2Q12','$A2Q13','$A2Q14','$A2Q15A','$A2Q15B','$A2Q16','$A2Q17',
+'$A2Q18A','$A2Q18B','$A2Q18C','$A2Q19A','$A2Q19B','$A2Q19C','$A3Q20A','$A3Q20B',
+'$A3Q20C','$A3Q21','$A3Q22','$A3Q23','$A3Q24','$A3Q25','$A3Q26','$A3Q27','$A3Q28',
+'$A3Q29','$A3Q30','$A3Q31A','$A3Q31B','$A3Q31C','$A4Q32','$A4Q33','$A4Q34','$A4Q35',
+'$A4Q36','$A4Q37','$A4Q38','$A4Q38a','$A4Q39','$A4Q39a','$A4Q40','$A4Q41','$A4Q42',
+'$A4Q43','$A5Q44','$A5Q45','$A5Q46','$A5Q47','$A5Q48','$A5Q48A','$A5Q49','$A5Q49A',
+'$A5Q50','$A5Q51','$A5Q52','$A5Q53','$A5Q54','$A5Q55')";
+$result=mysqli_query($conn,$sql);
+if ($result)
+{
+   echo "Data inserted successfully";
+   // echo $sql;
+   
+}
+else{
+   die(mysqli_error($conn));
+}
+
+
+}
 
 //print_r($_REQUEST);
 
@@ -52,8 +168,8 @@ include "commons/functions.php";
 
 
    $A1Q1 = getRequest('A1Q1', "");
-   $A1Q2A = getRequest('A1Q2A', "");
-   $A1Q2B = getRequest('A1Q2B', "");
+   $A1Q2A =getRequest('A1Q2A', "");
+   $A1Q2B =getRequest('A1Q2B', "");
 
    $A1Q3 = getRequest('A1Q3', "");
    $A1Q4 = getRequest('A1Q4', "");
@@ -66,79 +182,79 @@ include "commons/functions.php";
    $A1Q6A = getRequest('A1Q6A', "");
    $A1Q6B = getRequest('A1Q6B', "");
 
-   $A1Q7 = getRequest('A1Q7', "");
-   $A1Q8 = getRequest('A1Q8', "");
-   $A1Q9 = getRequest('A1Q9', "");
-   $A2Q10=getRequest('A2Q10',"");
-   $A2Q11=getRequest('A2Q11',"");
-   $A2Q12=getRequest('A2Q12',"");
-   $A2Q13=getRequest('A2Q13',"");
-   $A2Q14=getRequest('A2Q14',"");
+   $A1Q7 =getRequest('A1Q7', "");
+   $A1Q8 =getRequest('A1Q8', "");
+   $A1Q9 =getRequest('A1Q9', "");
+   $A2Q10 =getRequest('A2Q10',"");
+   $A2Q11 =getRequest('A2Q11',"");
+   $A2Q12 =getRequest('A2Q12',"");
+   $A2Q13 =getRequest('A2Q13',"");
+   $A2Q14 =getRequest('A2Q14',"");
 
-   $A2Q15A=getRequest('A2Q15A',"");
-   $A2Q15B=getRequest('A2Q15B',"");
+   $A2Q15A =getRequest('A2Q15A',"");
+   $A2Q15B =getRequest('A2Q15B',"");
 
-   $A2Q16=getRequest('A2Q16',"");
-   $A2Q17=getRequest('A2Q17',"");
+   $A2Q16 =getRequest('A2Q16',"");
+   $A2Q17 =getRequest('A2Q17',"");
 
-   $A2Q18A=getRequest('A2Q18A',"");
-   $A2Q18B=getRequest('A2Q18B',"");
-   $A2Q18C=getRequest('A2Q18C',"");
+   $A2Q18A  =getRequest('A2Q18A',"");
+   $A2Q18B  =getRequest('A2Q18B',"");
+   $A2Q18C  =getRequest('A2Q18C',"");
 
-   $A2Q19A=getRequest('A2Q19A',"");
-   $A2Q19B=getRequest('A2Q19B',"");
-   $A2Q19C=getRequest('A2Q19C',"");
-
-   $A3Q20A=getRequest('A3Q20A',"");
-   $A3Q20B=getRequest('A3Q20B',"");
-   $A3Q20C=getRequest('A3Q20C',"");
-
-   $A3Q21=getRequest('A3Q21',"");
-   $A3Q22=getRequest('A3Q22',"");
-   $A3Q23=getRequest('A3Q23',"");
-   $A3Q24=getRequest('A3Q24',"");
-   $A3Q25=getRequest('A3Q25',"");
-   $A3Q26=getRequest('A3Q26',"");
-   $A3Q27=getRequest('A3Q27',"");
-   $A3Q28=getRequest('A3Q28',"");
-   $A3Q29=getRequest('A3Q29',"");
-   $A3Q30=getRequest('A3Q30',"");
-   $A3Q31A=getRequest('A3Q31A',"");
-   $A3Q31B=getRequest('A3Q31B',"");
-   $A3Q31C=getRequest('A3Q31C',"");
-
-
-
-   $A4Q32=getRequest('A4Q32',"");
-   $A4Q33=getRequest('A4Q33',"");
-   $A4Q34=getRequest('A4Q34',"");
-   $A4Q35=getRequest('A4Q35',"");
-   $A4Q36=getRequest('A4Q36',"");
-   $A4Q37=getRequest('A4Q37',"");
-   $A4Q38=getRequest('A4Q38',"");
-   $A4Q38a=getRequest('A4Q38a',"");
-   $A4Q39=getRequest('A4Q39',"");
-   $A4Q39a=getRequest('A4Q39a',"");
-   $A4Q40=getRequest('A4Q40',"");
-   $A4Q41=getRequest('A4Q41',"");
-   $A4Q42=getRequest('A4Q42',"");
-   $A4Q43=getRequest('A4Q43',"");
+   $A2Q19A  =getRequest('A2Q19A',"");
+   $A2Q19B  =getRequest('A2Q19B',"");
+   $A2Q19C  =getRequest('A2Q19C',"")   ;
+   
+   $A3Q20A  =getRequest('A3Q20A',""); 
+   $A3Q20B  =getRequest('A3Q20B',"");
+   $A3Q20C  =getRequest('A3Q20C',"");
+   
+   $A3Q21   =getRequest('A3Q21',"");
+   $A3Q22   =getRequest('A3Q22',"");
+   $A3Q23   =getRequest('A3Q23',"");
+   $A3Q24   =getRequest('A3Q24',"");
+   $A3Q25   =getRequest('A3Q25',"");
+   $A3Q26   =getRequest('A3Q26',"");
+   $A3Q27   =getRequest('A3Q27',"");
+   $A3Q28   =getRequest('A3Q28',"");
+   $A3Q29   =getRequest('A3Q29',"");
+   $A3Q30   =getRequest('A3Q30',"");
+   $A3Q31A =getRequest('A3Q31A',"");
+   $A3Q31B =getRequest('A3Q31B',"");
+   $A3Q31C =getRequest('A3Q31C',"");
 
 
-   $A5Q44=getRequest('A5Q44',"");
-   $A5Q45=getRequest('A5Q45',"");
-   $A5Q46=getRequest('A5Q46',"");
-   $A5Q47=getRequest('A5Q47',"");
-   $A5Q48=getRequest('A5Q48',"");
-   $A5Q48A=getRequest('A5Q48A',"");
-   $A5Q49=getRequest('A5Q49',"");
-   $A5Q49A=getRequest('A5Q49A',"");
-   $A5Q50=getRequest('A5Q50',"");
-   $A5Q51=getRequest('A5Q51',"");
-   $A5Q52=getRequest('A5Q52',"");
-   $A5Q53=getRequest('A5Q53',"");
-   $A5Q54=getRequest('A5Q54',"");
-   $A5Q55=getRequest('A5Q55',"");
+
+   $A4Q32 =getRequest('A4Q32',"");
+   $A4Q33 =getRequest('A4Q33',"");
+   $A4Q34 =getRequest('A4Q34',"");
+   $A4Q35 =getRequest('A4Q35',"");
+   $A4Q36 =getRequest('A4Q36',"");
+   $A4Q37 =getRequest('A4Q37',"");
+   $A4Q38 =getRequest('A4Q38',"");
+   $A4Q38a =getRequest('A4Q38a',"");
+   $A4Q39 =getRequest('A4Q39',"");
+   $A4Q39a =getRequest('A4Q39a',"");
+   $A4Q40 =getRequest('A4Q40',"");
+   $A4Q41 =getRequest('A4Q41',"");
+   $A4Q42 =getRequest('A4Q42',"");
+   $A4Q43 =getRequest('A4Q43',"");
+
+
+   $A5Q44 =getRequest('A5Q44',"");
+   $A5Q45 =getRequest('A5Q45',"");
+   $A5Q46 =getRequest('A5Q46',"");
+   $A5Q47 =getRequest('A5Q47',"");
+   $A5Q48 =getRequest('A5Q48',"");
+   $A5Q48A =getRequest('A5Q48A',"");
+   $A5Q49 =getRequest('A5Q49',"");
+   $A5Q49A =getRequest('A5Q49A',"");
+   $A5Q50  =getRequest('A5Q50',"");
+   $A5Q51 =getRequest('A5Q51',"");
+   $A5Q52 =getRequest('A5Q52',"");
+   $A5Q53 =getRequest('A5Q53',"");
+   $A5Q54 =getRequest('A5Q54',"");
+   $A5Q55 =getRequest('A5Q55',"");
 
 
 
@@ -191,29 +307,29 @@ function getQuestion($pq, $inp="")
       $q = "Type of PTB";
       $a = "Smear:<ul style='list-style-type:none;'>";
       $a .= "<li>Positive<input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes'  ";
-      if ($inp == "Yes")
-         $a .= " checked ";
+      // if ($inp == "Yes")
+      //    $a .= " checked ";
       $a .= "></li>";
       $a .= "<li>Negative<input type=radio id=" . $pq . "_2 name=" . $pq . " value='No' ";
-      if ($inp == "No")
-         $a .= " checked ";
+      // if ($inp == "No")
+      //    $a .= " checked ";
       $a .= "></li>";
   }
   if ($pq == "A1Q5B")
   {
       $q = "";
-      $a = "CBNAAT: <ul Not Available >";
+      $a = "CBNAAT: <ul style='list-style-type:none;'>";
       $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' " ;
-      if ($inp == "Yes" )
-         $a .= " checked ";
+      // if ($inp == "Yes" )
+      //    $a .= " checked ";
       $a .= "> Detected </li>";
       $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' " ;
-      if ($inp == "No" )
-         $a .= " checked ";
+      // if ($inp == "No" )
+      //    $a .= " checked ";
       $a .= "> Not Detected </li>";
       $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='NA' " ;
-      if ($inp == "NA" )
-         $a .= " checked ";
+      // if ($inp == "NA" )
+      //    $a .= " checked ";
       $a .= ">Not Available </li>";
       $a .= "</ul>";
   }
@@ -221,25 +337,30 @@ function getQuestion($pq, $inp="")
   {
       $q = "";
       $a = "Drug Resistance: <ul style='list-style-type:none;'>";
-      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' onclick='setVisibility(\"A1Q5D\", \"visible\");' " ;
-      if ($inp == "Yes" )
-         $a .= " checked ";
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' onclick='setVisibility(\"A1Q5D_4\", \"visible\");' " ;
+      // if ($inp == "Yes" )
+      //    $a .= " checked ";
       $a .= "> Detected </li>";
-      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' onclick='setVisibility(\"A1Q5D\", \"hidden\");'" ;
-      if ($inp == "No" )
-         $a .= " checked ";
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' onclick='setVisibility(\"A1Q5D_4\",\"hidden\");'" ;
+      // if ($inp == "No" )
+      //    $a .= " checked ";
       $a .= "> Not Detected </li>";
       $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='NA' " ;
-      if ($inp == "NA" )
-         $a .= " checked ";
+      // if ($inp == "NA" )
+      //    $a .= " checked ";
       $a .= "> Not Available  </li>";
       $a .= "</ul>";
    }
    if ($pq == "A1Q5D")
    {
       $q = "";
-      $a = "Name of Resistant Drug:";
-      $a .= "<input type=text name=" . $pq . " id=" . $pq . " value=" . $pq . " >";
+      $a = "";
+      $a = "Name of Resistant Drug:<ul  style='list-style-type:none;' >";
+      $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Rifampicin' > Rifampicin </li>";
+      $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='Isonibid' > Isonibid </li>";
+      $a .= "<li>  <input type=radio id=" . $pq . "_3 name=" . $pq . " value='Others' > Others </li>";
+      $a .= "<li>Specify  <input type=text id=" . $pq . "_4 name=" . $pq . " value='' ></li>";
+      $a .= "</ul>";
    }
    if ($pq == "A1Q6A")
    {
@@ -354,7 +475,7 @@ function getQuestion($pq, $inp="")
    {
        $q = "Domicile";
 
-       $a = "Urban:  ";
+       $a = "<ul  style='list-style-type:none;' >Urban:  ";
        $a .= "Non slum<input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes'  ";
        if ($inp == "Yes")
           $a .= " checked ";
@@ -397,7 +518,8 @@ function getQuestion($pq, $inp="")
   if ($pq == "A2Q18B")
   {
      $q = "";
-     $a = "Current User <ul  style='list-style-type:none;' >";
+     $a = "<input type=radio id=" . $pq . "_1 name=" . $pq . " value='Rural' >Current User
+      <ul  style='list-style-type:none;' >";
      $a .= "<li>Type <input type=text id=" . $pq . "_1 name=" . $pq . " value='' >  </li>";
      $a .= "<li>Quantity per day  <input type=text id=" . $pq . "_2 name=" . $pq . " value='' ></li>";
      $a .= "<li>Duration in years  <input type=text id=" . $pq . "_3 name=" . $pq . " value='' ></li>";
@@ -408,11 +530,12 @@ function getQuestion($pq, $inp="")
   if ($pq == "A2Q18C")
   {
      $q = "";
-     $a = "Past User<input type=radio id=" . $pq . "_1name=" . $pq . " value='Nonuser'> 
-     $a .=<ul  style='list-style-type:none;' >";
+     $a = "<input type=radio id=" . $pq . "_1 name=" . $pq . " value='Rural' >Past User<ul  style='list-style-type:none;' >";
+     $a .= "<li>Type <input type=text id=" . $pq . "_1 name=" . $pq . " value='' >  </li>";
+    
      $a .= "<li>Quit using since:</li>";
      $a .= "<li>Years  <input type=text id=" . $pq . "_2 name=" . $pq . " value='' ></li>";
-     $a .= "<li>Months  <input type=text id=" . $pq . "_3 name=" . $pq . " value='' ></li>";
+     $a .= "<li>Months<input type=text id=" . $pq . "_3 name=" . $pq . " value='' ></li>";
      $a .= "</ul>";
   }
 
@@ -426,7 +549,7 @@ function getQuestion($pq, $inp="")
   if ($pq == "A2Q19B")
   {
      $q = "";
-     $a = "Current Smoker <ul  style='list-style-type:none;' >";
+     $a = "<input type=radio id=" . $pq . "_1 name=" . $pq . " value='Rural' >Current Smoker <ul  style='list-style-type:none;' >";
      $a .= "<li>Type <input type=text id=" . $pq . "_1 name=" . $pq . " value='' >  </li>";
      $a .= "<li>Quantity per day  <input type=text id=" . $pq . "_2 name=" . $pq . " value='' ></li>";
      $a .= "<li>Duration in years  <input type=text id=" . $pq . "_3 name=" . $pq . " value='' ></li>";
@@ -437,7 +560,7 @@ function getQuestion($pq, $inp="")
   if ($pq == "A2Q19C")
   {
      $q = "";
-     $a = "Ex-smoker<ul  style='list-style-type:none;' >";
+     $a = "<input type=radio id=" . $pq . "_1 name=" . $pq . " value='Rural' >Ex-smoker<ul  style='list-style-type:none;' >";
      $a .= "<li>Quit since:</li>";
      $a .= "<li>Years  <input type=text id=" . $pq . "_1 name=" . $pq . " value='' ></li>";
      $a .= "<li>Months  <input type=text id=" . $pq . "_2 name=" . $pq . " value='' ></li>";
@@ -549,7 +672,7 @@ function getQuestion($pq, $inp="")
    {
       $q = "Housing condtition";
       $a = "<ul  style='list-style-type:none;' >";
-      $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='pakka' > Paka </li>";
+      $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='pakka' > Pakka </li>";
       $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='kaccha' > Kaccha </li>";
       $a .= "</ul>";
    }
@@ -910,7 +1033,7 @@ function getQuestion($pq, $inp="")
 }
 
 ?>
-<form action=PTB_A.php method=post>
+<form action="PTB_A.php" method="post">
 <div style="width:600px;border:1px solid black;padding:5px;background-color:aliceblue; margin:auto;" >
 <p><center>PART - A</center></p>
 
@@ -1020,8 +1143,9 @@ function getQuestion($pq, $inp="")
 </table>
 
 <input type=submit name=action value='Prev' style="float: left;">
-<input type=submit name=action value='Next' style="float:right;">
-<input type=submit name=action value='Refresh' style="margin-left: 229px;">
+<input type=submit name=action value='Next' style="float:inherit;">
+<input type=submit name=submit value='add' style="float:right;">
+<input type=submit name=action value='Refresh' style="float:inherit;">
 
 <?php
    echo "<input type=hidden name=curPage value=" . $curPage ." >";

@@ -6,15 +6,15 @@ $t = function_exists("mysqli_connect");
 if ($t == 0)
 {
    echo "mySqli Not installed<br/>";
-   phpinfo();
+   phpinfo();   
    exit;
 }
 else
 {
    $servername = "localhost";
    $username = "root";
-   $password = "admin123";
-   $dbname="QueNet";
+   $password = "";
+   $dbname="quenet";
    try
    {
       $conn = new mysqli($servername, $username, $password,$dbname);
@@ -29,6 +29,8 @@ else
       echo "Server reported <br/> " . $e->getMessage();
    }
 }
+
+
 ?>
 
 

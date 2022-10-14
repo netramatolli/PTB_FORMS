@@ -14,11 +14,18 @@ function setVisibility(elem, v)
    e.style.visibility = v;
    
 }
+
+function getLatLon()
+{
+   let elem = document.getElementById("latlon");
+   elem.innerText = geoLocation.getLatLon();
+}
 </script>
 </head>
 <body>
 <?php
 include "commons/functions.php";
+include "commons/dbconnect.php";
 
 //print_r($_REQUEST);
 
@@ -159,15 +166,15 @@ include "commons/functions.php";
    {
     $q = "Can PTB transmitted from one person to another"; 
     $a = "<ul  style='list-style-type:none;' >";
-    $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' onclick='setVisibility(\"B1Q4\", \"visible\");' " ;
+    $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' onclick='setVisibility(\"B1Q4_0\", \"visible\");' " ;
       if ($inp == "Yes" )
          $a .= " checked ";
-      $a .= "> Yes </li>";
-      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' onclick='setVisibility(\"B1Q4\", \"hidden\");'" ;
+      $a .= "> Yes </li>"; 
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' onclick='setVisibility(\"B1Q4_0\", \"hidden\");'" ;
       if ($inp == "No" )
-         $a .= " checked ";
+         $a .= " checked ";      
       $a .= "> No </li>";
-      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='NA' onclick='setVisibility(\"B1Q4\", \"visible\");' " ;
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='NA'" ;
       if ($inp == "NA" )
          $a .= " checked ";
       $a .= "> Don't know </li>";
@@ -176,10 +183,11 @@ include "commons/functions.php";
    
    if ($pq == "B1Q4")
    {
-    $q = "How person can get PTB*"; 
-    $a = "<ul  style='list-style-type:none;' >";
+    
+    $q = "How person can get PTB"; 
+    $a = "<ul  style='list-style-type:none;' id=" . $pq . "_0 name=" . $pq . ">";
     $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='handshake' > Through handshakes </li>";
-    $a .= "<li>  <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='badair' > Through bad air </li>";
+    $a .= "<li> <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='badair' > Through bad air </li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='sneezes' > Through air when a person with TB cough/sneezes </li>";
     $a .= "<li>  <input type=checkbox id=" . $pq . "_4 name=" . $pq . " value='sharingdish' > Through sharing dishes </li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_5 name=" . $pq . " value='sharingclothings' >Through sharing clothings </li>";
@@ -197,18 +205,26 @@ include "commons/functions.php";
    if ($pq == "B1Q5")
    {
     $q = "Is transmission of PTB preventable?"; 
-    $a = "<ul  style='list-style-type:none;' >";
-    $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes </li>";
-    $a .= "<li>  <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='NO' > NO </li>";
-    $a .= "<li>  <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='Dnknw' > Don't know </li>";
-    // ADD if NO go to que no-7
-    $a .= "</ul>";
-   }  
+    $a = "<ul style='list-style-type:none;' >";
+    $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' onclick='setVisibility(\"B1Q6_0\", \"visible\");' " ;
+      if ($inp == "Yes" )
+         $a .= " checked ";
+      $a .= "> Yes </li>"; 
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' onclick='setVisibility(\"B1Q6_0\", \"hidden\");'" ;
+      if ($inp == "No" )
+         $a .= " checked ";      
+      $a .= "> No </li>";
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='NA'" ;
+      if ($inp == "NA" )
+         $a .= " checked ";
+      $a .= "> Don't know </li>";
+      $a .= "</ul>";
+   } 
 
    if ($pq == "B1Q6")
    {
     $q = "How can a person prevent getting PTB?*"; 
-    $a = "<ul  style='list-style-type:none;' >";
+    $a = "<ul  style='list-style-type:none;'id=" . $pq . "_0 name=" . $pq . ">";
     $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='avoidshaking' > Avoiding shaking hands </li>";
     $a .= "<li>  <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='covering' > Covering mouth and nose when coughing or sneezing </li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='avoidsharing' > Avoid sharing of dishes </li>";
@@ -228,17 +244,27 @@ include "commons/functions.php";
    {
     $q = "Can PTB transmitted from one person to another"; 
     $a = "<ul  style='list-style-type:none;' >";
-    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes </li>";
-    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
-    $a .= "<li>  <input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntno'> Don't know </li>";
-    // ADD if NO gto que no-9
-    $a .= "</ul>";
+    $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' onclick='setVisibility(\"B1Q8_0\", \"visible\");' " ;
+      if ($inp == "Yes" )
+         $a .= " checked ";
+      $a .= "> Yes </li>"; 
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' onclick='setVisibility(\"B1Q8_0\", \"hidden\");'" ;
+      if ($inp == "No" )
+         $a .= " checked ";      
+      $a .= "> No </li>";
+      $a .= "<li><input type=radio id=" . $pq . "_1 name=" . $pq . " value='NA'" ;
+      if ($inp == "NA" )
+         $a .= " checked ";
+      $a .= "> Don't know </li>";
+      $a .= "</ul>";
    } 
+
+
 
    if ($pq == "B1Q8")
    {
-    $q = "How can PTB be cured?*"; 
-    $a = "<ul  style='list-style-type:none;' >";
+    $q = "How can PTB be cured?* "; 
+    $a = "<ul  style='list-style-type:none;'id=" . $pq . "_0 name=" . $pq . " >";
     $a .= "<li> <input type=checkbox id=" . $pq . "_1 name=" . $pq . " value='homerest' > Home rest without medecine </li>";
     $a .= "<li>  <input type=checkbox id=" . $pq . "_2 name=" . $pq . " value='praying' > Praying </li>";
     $a .= "<li> <input type=checkbox id=" . $pq . "_3 name=" . $pq . " value='medecinesbyhspital' > Medecines given in hospital or dispensary </li>";
@@ -263,8 +289,8 @@ include "commons/functions.php";
     $a .= "<li>  <input type=checkbox  id=" . $pq . "_5 name=" . $pq . " value='Urinetest' > Urine test </li>";
     $a .= "<li>  <input type=checkbox  id=" . $pq . "_6 name=" . $pq . " value='Dntknw' >  Don't known  </li>";
     $a .= "<li>  <input type=checkbox  id=" . $pq . "_7 name=" . $pq . " value='Others' > Others </li>";
-    $a .= "<li> <input  type=text i d=" . $pq . "_8 name=" . $pq . " value='' ></li>";
-
+    $a .= "<li> <input  type=text id=" . $pq . "_8 name=" . $pq . " value='' ></li>";
+    
    
     $a .= "</ul>";
    }  
@@ -570,7 +596,8 @@ include "commons/functions.php";
 
 
    if ($pq == "B4Q4")
-   {
+   { 
+   
     $q = "Did you pay for the diagnosis of PTB?"; 
     $a = "<ul  style='list-style-type:none;' >";
     $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' > No  </li>";
@@ -582,6 +609,7 @@ include "commons/functions.php";
    
    if ($pq == "B4Q5")
    {
+      $q .= "id=" .$q . "_0 name=" . $q . "";     
     $q = "Did you pay for the treatment of PTB?"; 
     $a = "<ul  style='list-style-type:none;' >";
     $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='No' > No  </li>";
@@ -756,10 +784,13 @@ include "commons/functions.php";
 }
 
 ?>
-
+<div>
+   LOCATION<p id=latlon></p> <button id=btn_latlon onclick='getLatLon();' >Read</button>
+</div>
 <form action=PTB_B.php method=post>
    <div style="width:600px;border:1px solid black;padding:5px;background-color:aliceblue; margin:auto;" >
          <p><strong>1. knowledge of the participants on cause, symtoms,transission, treatement and prevention of PTB.</p></strong>
+
 
    <table rules=all style="background-color:lightyellow;color:brown;border:1px solid green;margin:auto;" >
 
