@@ -27,6 +27,96 @@ function getLatLon()
 include "commons/functions.php";
 include "commons/dbconnect.php";
 
+if (isset($_POST['submit']))
+{
+   @$B1Q1 =$_POST['B1Q1']; 
+   @$B1Q2 =$_POST['B1Q2']; 
+   @$B1Q3 =$_POST['B1Q3']; 
+   @$B1Q4 =$_POST['B1Q4']; 
+   @$B1Q5 =$_POST['B1Q5']; 
+   @$B1Q6 =$_POST['B1Q6']; 
+   @$B1Q7 =$_POST['B1Q7']; 
+   @$B1Q8 =$_POST['B1Q8']; 
+   @$B1Q9 =$_POST['B1Q9']; 
+   @$B1Q10=$_POST['B1Q10']; 
+   @$B1Q11=$_POST['B1Q11']; 
+   @$B1Q12=$_POST['B1Q12']; 
+   @$B1Q13=$_POST['B1Q13']; 
+   @$B1Q14=$_POST['B1Q14']; 
+   @$B1Q15=$_POST['B1Q15']; 
+   @$B1Q16 =$_POST['B1Q16'];
+   @$B1Q1 =$_POST['B1Q1'];
+   @$B1Q2 =$_POST['B1Q2'];
+   @$B1Q3 =$_POST['B1Q3'];
+   @$B1Q4 =$_POST['B1Q4'];
+   @$B1Q5 =$_POST['B1Q5'];
+   @$B1Q6 =$_POST['B1Q6'];
+   @$B1Q7 =$_POST['B1Q7'];
+   @$B1Q8 =$_POST['B1Q8'];
+   @$B1Q9 =$_POST['B1Q9'];
+   @$B1Q10=$_POST['B1Q10'];
+   @$B1Q11=$_POST['B1Q11'];
+   @$B1Q12=$_POST['B1Q12'];
+   @$B1Q13=$_POST['B1Q13'];
+   @$B1Q14=$_POST['B1Q14'];
+   @$B1Q15=$_POST['B1Q15'];
+   @$B1Q16=$_POST['B1Q16'];
+   @$B2Q1 =$_POST['B2Q1'];
+   @$B2Q2=$_POST['B2Q2']; 
+   @$B2Q3 =$_POST['B2Q3'];
+   @$B2Q4 =$_POST['B2Q4'];
+   @$B2Q5 =$_POST['B2Q5'];
+   @$B2Q6 =$_POST['B2Q6'];
+   @$B2Q7 =$_POST['B2Q7'];     
+   @$B3Q1=$_POST['B3Q1'];
+   @$B3Q2=$_POST['B3Q2']; 
+   @$B3Q3 =$_POST['B3Q3'];
+   @$B3Q4 =$_POST['B3Q4'];
+   @$B3Q5 =$_POST['B3Q5'];
+   @$B4Q1 =$_POST['B4Q1'];
+   @$B4Q2 =$_POST['B4Q2'];
+   @$B4Q3 =$_POST['B4Q3'];
+   @$B4Q4 =$_POST['B4Q4'];
+   @$B4Q5 =$_POST['B4Q5'];
+   @$B4Q6 =$_POST['B4Q6'];
+   @$B4Q7 =$_POST['B4Q7'];
+   @$B4Q8 =$_POST['B4Q8'];
+   @$B4Q9 =$_POST['B4Q9'];
+   @$B5Q1=$_POST['B5Q1']; 
+   @$B5Q2=$_POST['B5Q2']; 
+   @$B5Q3=$_POST['B5Q3']; 
+   @$B5Q4 =$_POST['B5Q4'];
+   @$B5Q5 =$_POST['B5Q5'];
+   @$B5Q6 =$_POST['B5Q6'];
+   @$B5Q7 =$_POST['B5Q7'];
+   @$B5Q8 =$_POST['B5Q8'];
+  
+     
+      
+
+      $sql="INSERT INTO `part_b`(`B1Q1`, `B1Q2`, `B1Q3`, `B1Q4`, `B1Q5`, `B1Q6`, `B1Q7`, `B1Q8`,
+      `B1Q9`, `B1Q10`, `B1Q11`, `B1Q12`, `B1Q13`, `B1Q14`, `B1Q15`, `B1Q16`,`B2Q1`, `B2Q2`, `B2Q3`,
+       `B2Q4`, `B2Q5`, `B2Q6`, `B2Q7`, `B3Q1`, `B3Q2`, `B3Q3`, `B3Q4`, `B3Q5`, `B4Q1`, `B4Q2`, `B4Q3`,
+        `B4Q4`, `B4Q5`, `B4Q6`, `B4Q7`, `B4Q8`, `B4Q9`, `B5Q1`, `B5Q2`, `B5Q3`, `B5Q4`, `B5Q5`,
+         `B5Q6`, `B5Q7`, `B5Q8`)
+      values('$B1Q1','$B1Q2','$B1Q3','$B1Q4','$B1Q5','$B1Q6','$B1Q7','$B1Q8',
+      '$B1Q9','$B1Q10','$B1Q11','$B1Q12','$B1Q13','$B1Q14','$B1Q15','$B1Q16','$B2Q1','$B2Q2','$B2Q3',
+      '$B2Q4','$B2Q5','$B2Q6','$B2Q7','$B3Q1','$B3Q2','$B3Q3','$B3Q4','$B3Q5','$B4Q1','$B4Q2','$B4Q3',
+      '$B4Q4','$B4Q5','$B4Q6','$B4Q7','$B4Q8','$B4Q9','$B5Q1','$B5Q2','$B5Q3','$B5Q4','$B5Q5',
+      '$B5Q6','$B5Q7','$B5Q8')";
+      $result=mysqli_query($conn,$sql);
+      if ($result)
+      {
+         echo "Data inserted successfully";
+         // echo $sql;
+         
+      }
+      else{
+         die(mysqli_error($conn));
+      }
+
+
+}
 //print_r($_REQUEST);
 
    $action = getRequest("action", "");
@@ -112,7 +202,7 @@ include "commons/dbconnect.php";
    $B5Q6 = getRequest('B5Q6', "");
    $B5Q7 = getRequest('B5Q7', "");
    $B5Q8 = getRequest('B5Q8', "");
-   $B5Q9 = getRequest('B5Q9', "");
+  
 
 
 
@@ -739,6 +829,17 @@ include "commons/dbconnect.php";
     
     $a .= "</ul>";
    } 
+   if ($pq == "B5Q5")
+   {
+    $q = "Do you feel well informed about availability of free diagnostics for PTB?"; 
+    $a = "<ul  style='list-style-type:none;' >";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
+    $a .= "If yes who has provided the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
+    
+    $a .= "</ul>";
+   } 
 
    if ($pq == "B5Q6")
    {
@@ -872,15 +973,16 @@ include "commons/dbconnect.php";
             echo getQuestion ("B5Q6",$B5Q6);
             echo getQuestion ("B5Q7",$B5Q7);
             echo getQuestion ("B5Q8",$B5Q8);
-            echo getQuestion ("B5Q9",$B5Q9);
+            
             $curPage = "B5";
          }
       ?>
    </table>
 
 <input type=submit name=action value='Prev' style="float: left;">
-<input type=submit name=action value='Next' style="float:right;">
-<input type=submit name=action value='Refresh' style="margin-left: 229px;">
+<input type=submit name=action value='Next' style="float:inherit;">
+<input type=submit name=submit value='add' style="float:right;">
+<input type=submit name=action value='Refresh' style="float:inherit;">
 
 <?php
    echo "<input type=hidden name=curPage value=" . $curPage ." >";
