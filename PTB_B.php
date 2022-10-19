@@ -14,12 +14,33 @@ function setVisibility(elem, v)
    e.style.visibility = v;
    
 }
+function clearText(onValue, txtElementId)
+{
+   alert (onValue);
+   if (onValue)
+   {
+      let elem = document.getElementById(txtElementId);
+      elem.innerText = "";
+   }
+}
+
+function displayText(onValue, txtElementId, txt)
+{
+   alert(onValue);
+   if (onValue == true)
+   {
+      let elem = document.getElementById(txtElementId);
+      elem.innerText = txt;
+   }
+}
 
 function getLatLon()
 {
    let elem = document.getElementById("latlon");
    elem.innerText = geoLocation.getLatLon();
 }
+
+
 </script>
 </head>
 <body>
@@ -798,10 +819,10 @@ if (isset($_POST['submit']))
    {
     $q = "Do you feel well informed about how PTB spreads?"; 
     $a = "<ul  style='list-style-type:none;' >";
-    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' > Yes  </li>";
-    $a .= "If yes who has provided the information: <li> <input type=text id=" . $pq . "_12 name=" . $pq . " value='' ></li>";
-    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No'> No </li>";
-    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw'>Don't know</li>";
+    $a .= "<li> <input type=radio id=" . $pq . "_1 name=" . $pq . " value='Yes' onclick='displayText(this.value, \"".$pq."_12\", \"ttt\");' > Yes  </li>";
+    $a .= "If yes who has provided the information: <li> <input type=text id='" . $pq . "_12' name=" . $pq . " value='' ></li>";
+    $a .= "<li>  <input type=radio id=" . $pq . "_2 name=" . $pq . " value='No' onclick='clearText(this.value == \"No\", \"" . $pq . "_12\");' >No </li>";
+    $a .= "<li><input type=radio id=" . $pq . "_3 name=" . $pq . " value='Dntknw' onclick='clearText(this.value == \"No\", \"" . $pq . "_12\");' >Don't know</li>";
     
     $a .= "</ul>";
    } 

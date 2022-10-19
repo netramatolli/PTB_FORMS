@@ -14,8 +14,8 @@ function setVisibility(elem, v)
 {
    let e = document.getElementById(elem);
    e.style.visibility = v;
-   
 }
+
 </script>
 </head>
 <body>
@@ -25,11 +25,12 @@ include "commons/dbconnect.php";
 
 if (isset($_POST['submit'])){
 
-// $A1Q1 =$_POST[''];
-// $A1Q2A =$_POST[''];
-// $A1Q2B =$_POST[''];
-// $A1Q3 =$_POST[''];
-// $A1Q4 =$_POST[''];
+@$A1Q1 =$_POST['participant_id'];
+@$A1Q2A =$_POST['name'];
+@$A1Q2B =$_POST['address'];
+@$A1Q2C =$_POST['mobile'];
+@$A1Q3 =$_POST['gender'];
+@$A1Q4 =$_POST['age'];
 
 @$A1Q5A =$_POST['A1Q5A'];
 @$A1Q5B =$_POST['A1Q5B'];
@@ -55,7 +56,7 @@ if (isset($_POST['submit'])){
 @$A2Q19A=$_POST['A2Q19A'];
 @$A2Q19B=$_POST['A2Q19B'];
 @$A2Q19C=$_POST['A2Q19C'];
-@$A3Q20A=$_POST['A2Q19C'];
+@$A3Q20A=$_POST['A3Q20A'];
 @$A3Q20B=$_POST['A3Q20B'];
 @$A3Q20C=$_POST['A3Q20C'];
 @$A3Q21 =$_POST['A3Q21'];
@@ -92,7 +93,6 @@ if (isset($_POST['submit'])){
 @$A5Q48 =$_POST['A5Q48'];
 @$A5Q48A=$_POST['A5Q48A'];
 @$A5Q49 =$_POST['A5Q49'];
-@$A5Q49A=$_POST['A5Q49A'];
 @$A5Q50 =$_POST['A5Q50'];
 @$A5Q51 =$_POST['A5Q51'];
 @$A5Q52 =$_POST['A5Q52'];
@@ -101,25 +101,25 @@ if (isset($_POST['submit'])){
 @$A5Q55 =$_POST['A5Q55'];
 
 
-// $sql="insert into `part_a`(`A1Q5A`, `A1Q5B`, `A1Q5C`, `A1Q5D`, `A1Q6A`, `A1Q6B`, `A1Q7`,
-//  `A1Q8`, `A1Q9`)VALUES('$A1Q5A','$A1Q5B','$A1Q5C','$A1Q5D','$A1Q6A','$A1Q6B','$A1Q7','$A1Q8','$A1Q9')"; 
+$sql="INSERT INTO `participant`(`participant_id`, `name`, `address`, `mobile`, `gender`, `age`)
+ VALUES ('$A1Q1','$A1Q2A','$A1Q2B','$A1Q2C','$A1Q3','$A1Q4')";
 
 
  $sql="insert into `part_a`(`A1Q5A`, `A1Q5B`, `A1Q5C`, `A1Q5D`, `A1Q6A`, `A1Q6B`, `A1Q7`, `A1Q8`, `A1Q9`, `A2Q10`, 
- `A2Q11`, `A2Q12`, `A2Q13`, `A2Q14`, `A2Q15A`, `A21Q16`, `A2Q17`, `A2Q18A`, `A2Q18B`,
-  `A2Q18C`, `A2Q19A`, `A2Q19B`, `A219QC`, `A3Q20A`, `A3Q20B`, `A3Q20C`, `A3Q21`, `A3Q22`,
+ `A2Q11`, `A2Q12`, `A2Q13`, `A2Q14`, `A2Q15A`,`A2Q15B`, `A2Q16`, `A2Q17`, `A2Q18A`, `A2Q18B`,
+  `A2Q18C`, `A2Q19A`, `A2Q19B`, `A2Q19C`, `A3Q20A`, `A3Q20B`, `A3Q20C`, `A3Q21`, `A3Q22`,
    `A3Q23`, `A3Q24`, `A3Q25`, `A3Q26`, `A3Q27`, `A3Q28`, `A3Q29`, `A3Q30`, `A3Q31A`,
     `A3Q31B`, `A3Q31C`, `A4Q32`, `A4Q33`, `A4Q34`, `A4Q35`, `A4Q36`, `A4Q37`, `A4Q38`,
      `A4Q38a`, `A4Q39`, `A4Q39a`, `A4Q40`, `A4Q41`, `A4Q42`, `A4Q43`, `A5Q44`, `A5Q45`,
-      `A5Q46`, `A5Q47`, `A5Q48`, `A5Q48A`, `A5Q49`, `A5Q49A`, `A5Q50`, `A5Q51`, `A5Q52`,
-       `A5Q53`, `A5Q54`, `A5Q55`, `A2Q15B`) 
+      `A5Q46`, `A5Q47`, `A5Q48`, `A5Q48A`,`A5Q49`, `A5Q50`, `A5Q51`, `A5Q52`,
+       `A5Q53`, `A5Q54`, `A5Q55`) 
 VALUES('$A1Q5A','$A1Q5B','$A1Q5C','$A1Q5D','$A1Q6A','$A1Q6B','$A1Q7','$A1Q8','$A1Q9',
 '$A2Q10','$A2Q11','$A2Q12','$A2Q13','$A2Q14','$A2Q15A','$A2Q15B','$A2Q16','$A2Q17',
 '$A2Q18A','$A2Q18B','$A2Q18C','$A2Q19A','$A2Q19B','$A2Q19C','$A3Q20A','$A3Q20B',
 '$A3Q20C','$A3Q21','$A3Q22','$A3Q23','$A3Q24','$A3Q25','$A3Q26','$A3Q27','$A3Q28',
 '$A3Q29','$A3Q30','$A3Q31A','$A3Q31B','$A3Q31C','$A4Q32','$A4Q33','$A4Q34','$A4Q35',
 '$A4Q36','$A4Q37','$A4Q38','$A4Q38a','$A4Q39','$A4Q39a','$A4Q40','$A4Q41','$A4Q42',
-'$A4Q43','$A5Q44','$A5Q45','$A5Q46','$A5Q47','$A5Q48','$A5Q48A','$A5Q49','$A5Q49A',
+'$A4Q43','$A5Q44','$A5Q45','$A5Q46','$A5Q47','$A5Q48','$A5Q48A','$A5Q49',
 '$A5Q50','$A5Q51','$A5Q52','$A5Q53','$A5Q54','$A5Q55')";
 $result=mysqli_query($conn,$sql);
 if ($result)
@@ -134,6 +134,8 @@ else{
 
 
 }
+
+
 
 //print_r($_REQUEST);
 
@@ -170,6 +172,7 @@ else{
    $A1Q1 = getRequest('A1Q1', "");
    $A1Q2A =getRequest('A1Q2A', "");
    $A1Q2B =getRequest('A1Q2B', "");
+   $A1Q2C =getRequest('A1Q2C',"");
 
    $A1Q3 = getRequest('A1Q3', "");
    $A1Q4 = getRequest('A1Q4', "");
@@ -248,7 +251,7 @@ else{
    $A5Q48 =getRequest('A5Q48',"");
    $A5Q48A =getRequest('A5Q48A',"");
    $A5Q49 =getRequest('A5Q49',"");
-   $A5Q49A =getRequest('A5Q49A',"");
+   
    $A5Q50  =getRequest('A5Q50',"");
    $A5Q51 =getRequest('A5Q51',"");
    $A5Q52 =getRequest('A5Q52',"");
@@ -283,6 +286,11 @@ function getQuestion($pq, $inp="")
   if ($pq == "A1Q2B")
   {
       $q = "Address";
+      $a = "<input type=textArea style='width:300px;height:60px;'  id=" . $pq . " name=" . $pq . " value='" . $inp . "' >";
+  }
+  if ($pq == "A1Q2C")
+  {
+      $q = "Mobile";
       $a = "<input type=textArea style='width:300px;height:60px;'  id=" . $pq . " name=" . $pq . " value='" . $inp . "' >";
   }
   if ($pq == "A1Q3")
@@ -1044,6 +1052,7 @@ function getQuestion($pq, $inp="")
       echo getQuestion ("A1Q1", $A1Q1); 
       echo getQuestion ("A1Q2A", $A1Q2A ); 
       echo getQuestion ("A1Q2B", $A1Q2B );
+      echo getQuestion("A1Q2C",$A1Q2C);
       echo getQuestion ("A1Q3", $A1Q3 ); 
       echo getQuestion ("A1Q4", $A1Q4 ); 
       echo getQuestion ("A1Q5A", $A1Q5A); 
